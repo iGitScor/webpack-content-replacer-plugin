@@ -3,32 +3,36 @@ const fs = require('fs');
 module.exports = class ContentReplacer {
 
   constructor(options) {
-    this.assetPath = options.assetPath;
-    this.manifestFile = options.manifestFile;
-    this.files = options.files;
+    this.modifications = options.modifications;
+    this.modifiedFile = options.modifiedFile;
   }
 
   apply(compiler) {
-    const that = this;
-    compiler.plugin('after-emit', (compilation, callback) => {
-      function replaceInFile(filePath, toReplace, replacement) {
-        function replacer(match) {
-          console.log('\x1b[1m\x1b[34mReplacing in %s: %s => %s\x1b[0m', filePath, match, replacement);
+    if (this.modifications && this.modifiedFile) {
+      const that = this;
+      compiler.plugin('after-emit', (compilation, callback) => {
+        function replaceInFile(filePath, toReplace, replacement) {
+          function replacer(match) {
+            const debug = '\x1b[1m\x1b[34mReplacing in %s: %s => %s\x1b[0m';
+            console.log(debug, filePath, match, replacement);
 
-          return replacement;
+            return replacement;
+          }
+
+          const str = fs.readFileSync(filePath, 'utf8');
+          const out = str.replace(new RegExp(toReplace), replacer);
+          fs.writeFileSync(filePath, out);
         }
 
-        const str = fs.readFileSync(filePath, 'utf8');
-        const out = str.replace(new RegExp(toReplace), replacer);
-        fs.writeFileSync(filePath, out);
-      }
+        if (Array.isArray(this.modifications) && this.modifications.length > 0) {
+          [].forEach.call(this.modifications, (modif) => {
+            replaceInFile(that.modifiedFile, modif.regex, modif.modification);
+          });
+        }
 
-      [].forEach.call(this.files, (file) => {
-        replaceInFile(that.manifestFile, file.regex, that.assetPath + file.name);
+        callback();
       });
-
-      callback();
-    });
+    }
   }
 
 };
