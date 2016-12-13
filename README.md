@@ -25,16 +25,15 @@ Add the plugin to your plugin list
 var config = {
   plugins: [
     new ContentReplacer({
-      assetPath: 'http://cdn.example.com/bundle/',
-      manifestFile: './relative_path/file_to_be_modified.ext',
-      files: [
+      modifiedFile: './relative_path/file_to_be_modified.ext',
+      modifications: [
         {
           regex: /%content_to_be_deleted%/g,
-          name: 'file2-filename.ext',
+          modification: 'new_content',
         },
         {
           regex: /%content2_to_be_deleted%/g,
-          name: 'file1-filename.ext',
+          modification: 'new_content2',
         },
       ],
     })
@@ -44,9 +43,8 @@ var config = {
 
 ### Options
 
-- `assetPath`: For absolute url rewriting
-- `manifestFile`: File to be modified
-- `files`: Array of file object having regex and name property
+- `modifiedFile`: File to be modified
+- `modifications`: Array of modifications' object having regex and modification property
 
 ### Contributing
 
