@@ -9,7 +9,7 @@ Replace content in file after emit in webpack workflow
 ## Install Instructions
 
 ```bash
-$ npm i webpack-content-replacer
+$ npm i webpack-content-replacer-plugin
 ```
 Note: This plugin needs NodeJS >= 6
 
@@ -17,7 +17,7 @@ Note: This plugin needs NodeJS >= 6
 
 **Require `webpack-content-replacer`**
 ```javascript
-var ContentReplacer = require('webpack-s3-plugin')
+var ContentReplacer = require('webpack-content-replacer-plugin')
 ```
 
 Add the plugin to your plugin list
