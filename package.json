@@ -1,0 +1,40 @@
+{
+  "name": "webpack-content-replacer",
+  "version": "0.1.0",
+  "description": "Replace content in file after emit in webpack workflow",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint '**/*.js' --ignore-path .eshintignore",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iGitScor/webpack-content-replacer.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "string replace",
+    "content replace",
+    "replace"
+  ],
+  "author": "iGitScor <sebastien.correaud@gmail.com> (http://iscor.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iGitScor/webpack-content-replacer/issues"
+  },
+  "homepage": "https://github.com/iGitScor/webpack-content-replacer#readme",
+  "devDependencies": {
+    "eslint": "3.11.x",
+    "eslint-config-airbnb": "13.0.x",
+    "eslint-plugin-import": "2.2.x",
+    "eslint-plugin-jsx-a11y": "2.2.x",
+    "eslint-plugin-react": "6.8.x"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "index.js"
+  ]
+}

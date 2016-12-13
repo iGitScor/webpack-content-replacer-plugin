@@ -1,0 +1,13 @@
+# ESLint documentation can be found at http://eslint.org/docs/
+# find . -path ./node_modules -prune -o -name "*.js" -o -name "*.jsx" -exec eslint {} \;
+
+env:
+  mocha: true
+  node: true
+
+extends: "airbnb"
+
+rules:
+  no-param-reassign: 0
+  vars-on-top: 0
+  strict: 0
