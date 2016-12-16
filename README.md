@@ -2,9 +2,9 @@
 
 Replace content in file after emit in webpack workflow
 
-[![Build Status](https://travis-ci.org/iGitScor/webpack-content-replacer.svg?branch=master)](https://travis-ci.org/iGitScor/webpack-content-replacer)
-[![dependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer/status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer)
-[![devDependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer/dev-status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer?type=dev)
+[![Build Status](https://travis-ci.org/iGitScor/webpack-content-replacer-plugin.svg?branch=master)](https://travis-ci.org/iGitScor/webpack-content-replacer-plugin)
+[![dependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer-plugin/status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer-plugin)
+[![devDependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer-plugin/dev-status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer-plugin?type=dev)
 
 ## Install Instructions
 
