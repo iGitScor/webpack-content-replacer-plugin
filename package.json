@@ -1,6 +1,6 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Replace content in file after emit in webpack workflow",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,9 @@
     "plugin",
     "string replace",
     "content replace",
-    "replace"
+    "replace",
+    "webpack plugin",
+    "str replace"
   ],
   "author": "iGitScor <sebastien.correaud@gmail.com> (http://iscor.me)",
   "license": "MIT",
