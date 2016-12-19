@@ -11,8 +11,8 @@ module.exports = class ContentReplacer {
     const that = this;
     function replaceInFile(filePath, toReplace, replacement) {
       function replacer(match) {
-        const debug = '\x1b[1m\x1b[34mReplacing in %s: %s => %s\x1b[0m';
-        console.log(debug, filePath, match, replacement);
+        const replacementDebug = '\x1b[1m\x1b[34mReplacing in %s: %s => %s\x1b[0m';
+        console.log(replacementDebug, filePath, match, replacement);
 
         return replacement;
       }
@@ -24,7 +24,17 @@ module.exports = class ContentReplacer {
 
     if (Array.isArray(this.modifications) && this.modifications.length > 0) {
       [].forEach.call(this.modifications, (modif) => {
-        replaceInFile(that.modifiedFile, modif.regex, modif.modification);
+        if (fs.existsSync(that.modifiedFile)) {
+          replaceInFile(that.modifiedFile, modif.regex, modif.modification);
+        } else {
+          // Log not found file path
+          const mainWarning = '\x1b[1m\x1b[33mWARNING in %s\x1b[0m';
+          console.warn(mainWarning, that.modifiedFile);
+
+          // Display replacement patterns
+          const infoWarning = '\x1b[34mFile not found (%s not replaced by %s)\x1b[0m';
+          console.warn(infoWarning, modif.regex, modif.modification);
+        }
       });
     }
   }
