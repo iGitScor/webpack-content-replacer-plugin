@@ -1,6 +1,6 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Replace content in file after emit in webpack workflow",
   "main": "index.js",
   "scripts": {
@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/iGitScor/webpack-content-replacer-plugin#readme",
   "devDependencies": {
-    "eslint": "3.12.x",
-    "eslint-config-airbnb": "13.0.x",
+    "eslint": "3.13.x",
+    "eslint-config-airbnb": "14.0.x",
     "eslint-plugin-import": "2.2.x",
-    "eslint-plugin-jsx-a11y": "2.2.x",
-    "eslint-plugin-react": "6.8.x"
+    "eslint-plugin-jsx-a11y": "3.0.x",
+    "eslint-plugin-react": "6.9.x"
   },
   "engines": {
     "node": ">=6"
