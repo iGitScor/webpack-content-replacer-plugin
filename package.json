@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/iGitScor/webpack-content-replacer-plugin#readme",
   "devDependencies": {
-    "eslint": "3.13.x",
+    "eslint": "3.14.x",
     "eslint-config-airbnb": "14.0.x",
     "eslint-plugin-import": "2.2.x",
     "eslint-plugin-jsx-a11y": "3.0.x",
