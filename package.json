@@ -1,7 +1,7 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.2.3",
-  "description": "Replace content in file after emit in webpack workflow",
+  "version": "0.2.4",
+  "description": "Replace content in file in webpack workflow",
   "main": "index.js",
   "scripts": {
     "lint": "eslint '**/*.js' --ignore-path .eshintignore",
