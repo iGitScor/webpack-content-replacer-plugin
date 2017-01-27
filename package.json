@@ -1,11 +1,12 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Replace content in file in webpack workflow",
   "main": "index.js",
   "scripts": {
     "lint": "eslint '**/*.js' --ignore-path .eshintignore",
-    "test": "npm run lint"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha",
+    "test": "npm run lint && npm run cover && codecov"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,15 @@
   },
   "homepage": "https://github.com/iGitScor/webpack-content-replacer-plugin#readme",
   "devDependencies": {
+    "codecov": "1.0.x",
     "eslint": "3.14.x",
     "eslint-config-airbnb": "14.0.x",
     "eslint-plugin-import": "2.2.x",
     "eslint-plugin-jsx-a11y": "3.0.x",
-    "eslint-plugin-react": "6.9.x"
+    "eslint-plugin-react": "6.9.x",
+    "expect.js": "0.3.x",
+    "istanbul": "0.4.x",
+    "mocha": "3.2.x"
   },
   "engines": {
     "node": ">=6"
