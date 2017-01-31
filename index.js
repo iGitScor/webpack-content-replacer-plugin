@@ -14,71 +14,58 @@ module.exports = class ContentReplacer {
       this.verbose = !this.silent;
     } else {
       // Throw exception
-      const error = ContentReplacer.hasRequiredParameters(options)
-        ? 'Parameters are invalid'
-        : 'Required parameters are missing';
+      const error = typeof options === 'object'
+        ? 'Required parameters are missing'
+        : 'Parameters are invalid';
 
       throw new Error(error);
     }
   }
 
   static hasRequiredParameters(options) {
-    return options.modifications && options.modifiedFile;
+    return Object.hasOwnProperty.call(options, 'modifications') &&
+      Object.hasOwnProperty.call(options, 'modifiedFile');
   }
 
   static hasValidOptions(options) {
+    if (typeof options !== 'object') {
+      return false;
+    }
+
     return ContentReplacer.hasRequiredParameters(options) &&
       (validBuildTrigger.indexOf(options.buildTrigger) >= 0 ||
-        !Object.hasOwnProperty.call(options, 'buildTrigger'));
+        !Object.hasOwnProperty.call(options, 'buildTrigger')) &&
+      (Array.isArray(options.modifications) &&
+        options.modifications.length > 0);
   }
 
   replace() {
     const that = this;
-    function replaceInFile(filePath, toReplace, replacement) {
-      function replacer(match) {
+    if (fs.existsSync(this.modifiedFile)) {
+      [].forEach.call(this.modifications, (modif) => {
+        const str = fs.readFileSync(that.modifiedFile, 'utf8');
+        const out = str.replace(new RegExp(modif.regex), modif.modification);
+        fs.writeFileSync(that.modifiedFile, out);
+
         if (that.verbose) {
           const replacementDebug = '\x1B[1m\x1B[34mReplacing in %s: %s => %s\x1B[0m';
 
           // eslint-disable-next-line no-console
-          console.log(replacementDebug, filePath, match, replacement);
-        }
-
-        return replacement;
-      }
-
-      const str = fs.readFileSync(filePath, 'utf8');
-      const out = str.replace(new RegExp(toReplace), replacer);
-      fs.writeFileSync(filePath, out);
-    }
-
-    if (Array.isArray(this.modifications) && this.modifications.length > 0) {
-      [].forEach.call(this.modifications, (modif) => {
-        if (fs.existsSync(that.modifiedFile)) {
-          replaceInFile(that.modifiedFile, modif.regex, modif.modification);
-        } else {
-          // Log not found file path
-          const mainWarning = '\x1B[1m\x1B[33mWARNING in %s\x1B[0m';
-
-          // eslint-disable-next-line no-console
-          console.warn(mainWarning, that.modifiedFile);
-
-          // Display replacement patterns
-          const infoWarning = '\x1B[34mFile not found (%s not replaced by %s)\x1B[0m';
-
-          // eslint-disable-next-line no-console
-          console.warn(infoWarning, modif.regex, modif.modification);
+          console.log(replacementDebug, that.modifiedFile, modif.regex, modif.modification);
         }
       });
+
+      return true;
     }
+
+    throw new Error('File not found');
   }
 
   apply(compiler) {
-    if (this.modifications && this.modifiedFile) {
-      const that = this;
-      compiler.plugin(this.buildTrigger, (compilation, callback) => {
-        that.replace();
-        callback();
-      });
-    }
+    const that = this;
+    compiler.plugin(this.buildTrigger, (compilation, callback) => {
+      that.replace();
+      callback();
+    });
   }
 };

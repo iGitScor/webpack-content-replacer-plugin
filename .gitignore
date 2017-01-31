@@ -1,2 +1,4 @@
 # Node
 /node_modules
+
+/coverage
