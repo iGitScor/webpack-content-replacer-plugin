@@ -16,19 +16,35 @@ const options = {
 const invalidOptionsType = '';
 const invalidOptionsObj = {};
 
+// Webpack plugin mock
+const compiler = {
+  plugin: (buildTrigger, callback) => {
+    callback(null, () => {});
+  },
+};
+
 describe('ContentReplacer plugin', () => {
   it('should be instantiated', () => {
     contentReplacer = new ContentReplacerPlugin(options);
     expect(typeof contentReplacer).to.equal('object');
   });
 
-  it('should throw error', () => {
+  it('should throw error when no parameters', () => {
     const noParamConstructor = function () {
       // eslint-disable-next-line no-new
       new ContentReplacerPlugin();
     };
 
-    expect(noParamConstructor).to.throwException();
+    expect(noParamConstructor).to.throwException(/Parameters are invalid/);
+  });
+
+  it('should throw error when parameter format is wrong', () => {
+    const wrongParamConstructor = function () {
+      // eslint-disable-next-line no-new
+      new ContentReplacerPlugin({});
+    };
+
+    expect(wrongParamConstructor).to.throwException(/Required parameters are missing/);
   });
 
   it('should have default options', () => {
@@ -55,19 +71,29 @@ describe('ContentReplacer plugin', () => {
 
   it('should detect missing file', () => {
     contentReplacer.verbose = false;
-    expect(contentReplacer.replace()).to.equal(false);
+    expect(contentReplacer.replace).to.throwException(/File not found/);
+
+    contentReplacer.verbose = true;
+    expect(contentReplacer.replace).to.throwException(/File not found/);
   });
 
   it('should replace content', () => {
+    contentReplacer.verbose = false;
     contentReplacer.modifiedFile = path.resolve('test/file.txt');
     expect(contentReplacer.replace()).to.equal(true);
 
+    // Test with verbose mode
+    contentReplacer.verbose = true;
     contentReplacer.modifications = [
       {
         regex: /new_content/g,
         modification: '%content_to_be_deleted%',
       },
     ];
-    contentReplacer.replace();
+    expect(contentReplacer.replace()).to.equal(true);
+  });
+
+  it('should apply compiler (webpack-mock)', () => {
+    contentReplacer.apply(compiler);
   });
 });

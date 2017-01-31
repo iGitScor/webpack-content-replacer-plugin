@@ -14,9 +14,9 @@ module.exports = class ContentReplacer {
       this.verbose = !this.silent;
     } else {
       // Throw exception
-      const error = typeof options === 'object' && ContentReplacer.hasRequiredParameters(options)
-        ? 'Parameters are invalid'
-        : 'Required parameters are missing';
+      const error = typeof options === 'object'
+        ? 'Required parameters are missing'
+        : 'Parameters are invalid';
 
       throw new Error(error);
     }
@@ -34,43 +34,31 @@ module.exports = class ContentReplacer {
 
     return ContentReplacer.hasRequiredParameters(options) &&
       (validBuildTrigger.indexOf(options.buildTrigger) >= 0 ||
-        !Object.hasOwnProperty.call(options, 'buildTrigger'));
+        !Object.hasOwnProperty.call(options, 'buildTrigger')) &&
+      (Array.isArray(options.modifications) &&
+        options.modifications.length > 0);
   }
 
   replace() {
     const that = this;
     if (fs.existsSync(this.modifiedFile)) {
-      if (Array.isArray(this.modifications) && this.modifications.length > 0) {
-        [].forEach.call(this.modifications, (modif) => {
-          const str = fs.readFileSync(that.modifiedFile, 'utf8');
-          const out = str.replace(new RegExp(modif.regex), modif.modification);
-          fs.writeFileSync(that.modifiedFile, out);
+      [].forEach.call(this.modifications, (modif) => {
+        const str = fs.readFileSync(that.modifiedFile, 'utf8');
+        const out = str.replace(new RegExp(modif.regex), modif.modification);
+        fs.writeFileSync(that.modifiedFile, out);
 
-          if (that.verbose) {
-            const replacementDebug = '\x1B[1m\x1B[34mReplacing in %s: %s => %s\x1B[0m';
+        if (that.verbose) {
+          const replacementDebug = '\x1B[1m\x1B[34mReplacing in %s: %s => %s\x1B[0m';
 
-            // eslint-disable-next-line no-console
-            console.log(replacementDebug, that.modifiedFile, modif.regex, modif.modification);
-          }
-        });
-      }
+          // eslint-disable-next-line no-console
+          console.log(replacementDebug, that.modifiedFile, modif.regex, modif.modification);
+        }
+      });
 
       return true;
-    } else if (this.verbose) {
-        // Log not found file path
-      const mainWarning = '\x1B[1m\x1B[33mWARNING in %s\x1B[0m';
-
-        // eslint-disable-next-line no-console
-      console.warn(mainWarning, this.modifiedFile);
-
-        // Display replacement patterns
-      const infoWarning = '\x1B[34mFile not found\x1B[0m';
-
-        // eslint-disable-next-line no-console
-      console.warn(infoWarning);
     }
 
-    return false;
+    throw new Error('File not found');
   }
 
   apply(compiler) {
