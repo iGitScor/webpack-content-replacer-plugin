@@ -2,9 +2,12 @@
 
 Replace content in file in webpack workflow
 
-[![Build Status](https://travis-ci.org/iGitScor/webpack-content-replacer-plugin.svg?branch=master)](https://travis-ci.org/iGitScor/webpack-content-replacer-plugin)
-[![dependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer-plugin/status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer-plugin)
-[![devDependencies Status](https://david-dm.org/iGitScor/webpack-content-replacer-plugin/dev-status.svg)](https://david-dm.org/iGitScor/webpack-content-replacer-plugin?type=dev)
+[![Build Status][build-badge]][build]
+[![codecov][codecoverage-badge]][codecoverage]
+[![Dependencies][dependencyci-badge]][dependencyci]
+[![dependencies Status][dependencies-badge]][dependencies]
+[![devDependencies Status][devDependencies-badge]][devDependencies]
+[![MIT License][license-badge]][LICENSE]
 
 ## Install Instructions
 
@@ -98,3 +101,16 @@ var config = {
 ### Contributing
 
 All contributions are welcome. Please make a pull request and make sure things still pass after running `npm test`
+
+[build-badge]: https://img.shields.io/travis/iGitScor/webpack-content-replacer-plugin.svg?style=flat-square
+[build]: https://travis-ci.org/iGitScor/webpack-content-replacer-plugin
+[codecoverage-badge]: https://codecov.io/gh/iGitScor/webpack-content-replacer-plugin/branch/master/graph/badge.svg?style=flat-square
+[codecoverage]: https://codecov.io/gh/iGitScor/webpack-content-replacer-plugin
+[dependencyci-badge]: https://dependencyci.com/github/iGitScor/webpack-content-replacer-plugin/badge?style=flat-square
+[dependencyci]: https://dependencyci.com/github/iGitScor/webpack-content-replacer-plugin
+[dependencies-badge]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin/status.svg?style=flat-square
+[dependencies]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin
+[devDependencies-badge]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin/dev-status.svg?style=flat-square
+[devDependencies]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin?type=dev
+[license-badge]: https://img.shields.io/apm/l/prettier-eslint.svg?style=flat-square
+[license]: https://github.com/iGitScor/webpack-content-replacer-plugin/blob/master/LICENSE
