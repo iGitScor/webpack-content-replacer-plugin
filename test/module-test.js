@@ -1,6 +1,8 @@
+const fs = require('fs');
 const path = require('path');
 const ContentReplacerPlugin = require('../index.js');
 const expect = require('expect.js');
+const webpackMock = require('webpack-mock');
 
 let contentReplacer;
 const options = {
@@ -16,14 +18,15 @@ const options = {
 const invalidOptionsType = '';
 const invalidOptionsObj = {};
 
-// Webpack plugin mock
-const compiler = {
-  plugin: (buildTrigger, callback) => {
-    callback(null, () => {});
-  },
-};
-
 describe('ContentReplacer plugin', () => {
+  before(() => {
+    fs.writeFileSync('test/file.txt', '%content_to_be_deleted%');
+  });
+
+  after(() => {
+    fs.unlinkSync('test/file.txt');
+  });
+
   it('should be instantiated', () => {
     contentReplacer = new ContentReplacerPlugin(options);
     expect(typeof contentReplacer).to.equal('object');
@@ -94,6 +97,6 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should apply compiler (webpack-mock)', () => {
-    contentReplacer.apply(compiler);
+    contentReplacer.apply(webpackMock);
   });
 });
