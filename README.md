@@ -112,5 +112,5 @@ All contributions are welcome. Please make a pull request and make sure things s
 [dependencies]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin
 [devDependencies-badge]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin/dev-status.svg?style=flat-square
 [devDependencies]: https://david-dm.org/iGitScor/webpack-content-replacer-plugin?type=dev
-[license-badge]: https://img.shields.io/apm/l/webpack-content-replacer-plugin.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/webpack-content-replacer-plugin.svg?style=flat-square
 [license]: https://github.com/iGitScor/webpack-content-replacer-plugin/blob/master/LICENSE
