@@ -37,6 +37,7 @@
     "expect.js": "0.3.x",
     "istanbul": "0.4.x",
     "mocha": "3.2.x",
+    "webpack": "1.13",
     "webpack-mock": "0.1.x"
   },
   "engines": {
