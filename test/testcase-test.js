@@ -30,7 +30,7 @@ describe('Webpack workflow test cases', () => {
       if (stats.hasErrors()) return done(new Error(stats.toString()));
 
       const testFilePath = path.join(__dirname, '../workflow_test/index.html');
-      const target = ['Replaced', 'Replaced2'];
+      const target = ['First Test has been Replaced', 'Second Test has been Replaced'];
       const data = fs.readFileSync(testFilePath, 'utf8').toString();
       target.forEach((value) => {
         expect(data.indexOf(value) !== -1).to.equal(true);
@@ -45,7 +45,7 @@ describe('Webpack workflow test cases', () => {
       if (stats.hasErrors()) return done(new Error(stats.toString()));
 
       const testCssPath = path.join(__dirname, '../workflow_test/style.css');
-      const target = ['Replaced', 'Replaced2'];
+      const target = ['blue', 'width'];
       const data = fs.readFileSync(testCssPath, 'utf8').toString();
       target.forEach((value) => {
         expect(data.indexOf(value) !== -1).to.equal(true);

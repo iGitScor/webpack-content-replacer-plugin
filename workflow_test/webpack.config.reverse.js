@@ -4,12 +4,12 @@ const htmlOptions = {
   modifiedFile: './workflow_test/index.html',
   modifications: [
     {
-      regex: /Replaced/g,
-      modification: 'FTest',
+      regex: /First Test has been Replaced/g,
+      modification: 'First Test',
     },
     {
-      regex: /Replaced2/g,
-      modification: 'STest',
+      regex: /Second Test has been Replaced/g,
+      modification: 'Second Test',
     },
   ],
 };
@@ -18,11 +18,11 @@ const cssOptions = {
   modifiedFile: './workflow_test/style.css',
   modifications: [
     {
-      regex: /Replaced/g,
+      regex: /blue/g,
       modification: 'red',
     },
     {
-      regex: /Replaced2/g,
+      regex: /width/g,
       modification: 'height',
     },
   ],
