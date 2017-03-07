@@ -52,29 +52,10 @@ var config = {
 
 ### Configuration
 
-#### silent
-Type: `Boolean`  
-Default: `false`
-
-Display/hide info logs during the build.
-
-Example:
-```javascript
-var config = {
-  plugins: [
-    new ContentReplacer({
-      silent: true,
-      ...
-      ],
-    })
-  ]
-}
-```
-
 #### modifiedFile
-Type: `String`  
-Default: no default value
-Required: true
+- Type: `String`  
+- Default: no default value
+- Required: true
 
 Specify the file which will be modified.
 
@@ -83,7 +64,6 @@ Example:
 var config = {
   plugins: [
     new ContentReplacer({
-      silent: true,
       modifiedFile: './build/index.html',
       ...
     })
@@ -92,9 +72,9 @@ var config = {
 ```
 
 #### modifications
-Type: `Array<Modification>`  
-Default: no default value
-Required: true
+- Type: `Array<Modification>`  
+- Default: no default value
+- Required: true
 
 Specify the modifications to be applied to the file.
 
@@ -103,7 +83,6 @@ Example:
 var config = {
   plugins: [
     new ContentReplacer({
-      silent: true,
       modifiedFile: './build/index.html',
       [
         {
@@ -118,9 +97,9 @@ var config = {
 ```
 
 ##### modification
-Type: `Object`
-Default: no default value
-Required: true
+- Type: `Object`
+- Default: no default value
+- Required: true
 
 Example:
 ```javascript
@@ -131,11 +110,36 @@ Example:
 ```
 
 #### buildTrigger
-Type: `String`
-Default: `after-emit`
-Allowed values: `after-emit`, `done`, `failed`
+- Type: `String`
+- Default: `after-emit`
+- Allowed values: `after-emit`, `done`, `failed`
 
 Specify webpack build step (c.f [plugin documentation](https://webpack.github.io/docs/plugins.html)).
+
+Example:
+```javascript
+var config = {
+  plugins: [
+    new ContentReplacer({
+      modifiedFile: './build/index.html',
+      [
+        {
+          regex: /text/g,
+          modification: 'new text'
+        }
+      ],
+      buildTrigger: 'done',
+      ...
+    })
+  ]
+}
+```
+
+#### silent
+- Type: `Boolean`  
+- Default: `false`
+
+Display/hide info logs during the build.
 
 Example:
 ```javascript
@@ -151,6 +155,7 @@ var config = {
         }
       ],
       buildTrigger: 'done'
+      ],
     })
   ]
 }
@@ -169,7 +174,19 @@ Replace `{your fork}` by your github username.
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature
-branch. All contributions are welcome. Please make a pull request and make sure things still pass after running `npm test`
+branch. All contributions are welcome. Please make a pull request and make sure things still pass after running `npm test`.
+Ensure you've read the [contribution guidelines](CONTRIBUTING.md) for more information and respect the [code of conduct](CODE_OF_CONDUCT.md)
+
+### Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars3.githubusercontent.com/u/2276944?v=3" width="100px;"/><br /><sub>Sebastien Correaud</sub>](http://twitter.com/iTweetScor)<br />🚇 [💻](https://github.com/iGitScor/webpack-content-replacer-plugin/commits?author=iGitScor) [📖](https://github.com/iGitScor/webpack-content-replacer-plugin/commits?author=iGitScor) [⚠️](https://github.com/iGitScor/webpack-content-replacer-plugin/commits?author=iGitScor) 👀 | [<img src="https://avatars0.githubusercontent.com/u/14843447?v=3" width="100px;"/><br /><sub>YQBird</sub>](https://github.com/YQBird)<br />[📖](https://github.com/iGitScor/webpack-content-replacer-plugin/commits?author=YQBird) [⚠️](https://github.com/iGitScor/webpack-content-replacer-plugin/commits?author=YQBird) 👀 |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 ## Licensing
 

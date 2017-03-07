@@ -1,0 +1,35 @@
+{
+  "projectName": "webpack-content-replacer-plugin",
+  "projectOwner": "iGitScor",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "iGitScor",
+      "name": "Sebastien Correaud",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2276944?v=3",
+      "profile": "http://twitter.com/iTweetScor",
+      "contributions": [
+        "infra",
+        "code",
+        "doc",
+        "test",
+        "review"
+      ]
+    },
+    {
+      "login": "YQBird",
+      "name": "YQBird",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14843447?v=3",
+      "profile": "https://github.com/YQBird",
+      "contributions": [
+        "doc",
+        "test",
+        "review"
+      ]
+    }
+  ]
+}

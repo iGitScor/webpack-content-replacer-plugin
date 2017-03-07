@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint '**/*.js' --ignore-path .eshintignore",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha",
-    "test": "npm run lint && npm run cover && codecov"
+    "test": "npm run lint && npm run cover && codecov",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
   },
   "homepage": "https://github.com/iGitScor/webpack-content-replacer-plugin#readme",
   "devDependencies": {
+    "all-contributors-cli": "4.0.x",
     "codecov": "1.0.x",
     "eslint": "3.16.x",
     "eslint-config-airbnb": "14.1.x",
