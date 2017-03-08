@@ -1,11 +1,12 @@
 # Change log
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com) and this project adheres to [Semantic Versioning](http://semver.org).
+The format is based on [Keep a Changelog](http://keepachangelog.com) and this project follows the [Semantic Versioning](http://semver.org) code.
 
 ## 0.3.6 - 2017-03-04
 ### Added
 - Add CHANGELOG.md.
+- Update contribution documentation.
 
 ## 0.3.5 - 2017-03-02
 ### Added
@@ -52,7 +53,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com) and this pr
 
 ## 0.2.1 - 2016-12-16
 ### Changed
-- Divide the logic of manual call to replace content.
+- Extract replace method to be called outside a webpack workflow.
 - Update README.md and npm config.
 
 
