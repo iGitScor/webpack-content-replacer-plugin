@@ -10,11 +10,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com) and this pr
 
 ## 0.3.5 - 2017-03-02
 ### Added
-- Add pull request template document. 
+- Add pull request template document.
+
+**! Not a npm version**
 
 ## 0.3.4 - 2017-03-01
 ### Added
 - Add test case to test webpack plugin workflow by checking build result.
+
+**! Not a npm version**
 
 ## 0.3.3 - 2017-02-21
 ### Changed
