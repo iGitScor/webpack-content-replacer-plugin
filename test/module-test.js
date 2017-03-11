@@ -35,7 +35,7 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should throw error when no parameters', () => {
-    const noParamConstructor = function () {
+    const noParamConstructor = () => {
       // eslint-disable-next-line no-new
       new ContentReplacerPlugin();
     };
@@ -44,7 +44,7 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should throw error when parameter format is wrong', () => {
-    const wrongParamConstructor = function () {
+    const wrongParamConstructor = () => {
       // eslint-disable-next-line no-new
       new ContentReplacerPlugin({});
     };
