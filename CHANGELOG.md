@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this project follows the [Semantic Versioning](http://semver.org) code.
 
+## 0.3.7 - 2017-03-11
+### Changed
+- Improve node compatibility.
+
 ## 0.3.6 - 2017-03-04
 ### Added
 - Add CHANGELOG.md.
