@@ -2,9 +2,9 @@ const fs = require('fs');
 
 const validBuildTrigger = ['after-emit', 'done', 'failed'];
 
-module.exports = class ContentReplacer {
+module.exports = class ContentReplacerWebpackPlugin {
   constructor(options) {
-    if (ContentReplacer.hasValidOptions(options)) {
+    if (ContentReplacerWebpackPlugin.hasValidOptions(options)) {
       this.modifications = options.modifications;
       this.modifiedFile = options.modifiedFile;
 
@@ -32,7 +32,7 @@ module.exports = class ContentReplacer {
       return false;
     }
 
-    return ContentReplacer.hasRequiredParameters(options) &&
+    return ContentReplacerWebpackPlugin.hasRequiredParameters(options) &&
       (validBuildTrigger.indexOf(options.buildTrigger) >= 0 ||
         !Object.hasOwnProperty.call(options, 'buildTrigger')) &&
       (Array.isArray(options.modifications) &&
