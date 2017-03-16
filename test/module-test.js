@@ -29,7 +29,7 @@ describe('ContentReplacerWebpackPlugin plugin', () => {
 
   it('should be instantiated', () => {
     contentReplacerWebpackPlugin = new ContentReplacerWebpackPlugin(options);
-    expect(typeof contentReplacer).to.equal('object');
+    expect(typeof contentReplacerWebpackPlugin).to.equal('object');
   });
 
   it('should throw error when no parameters', () => {
