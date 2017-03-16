@@ -26,7 +26,7 @@ npm i webpack-content-replacer-plugin
 
 **Require `webpack-content-replacer-plugin`**
 ```javascript
-var ContentReplacer = require('webpack-content-replacer-plugin')
+var ContentReplacerWebpackPlugin = require('webpack-content-replacer-plugin')
 ```
 
 Add the plugin to your plugin list
