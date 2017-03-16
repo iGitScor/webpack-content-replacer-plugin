@@ -4,7 +4,7 @@ const ContentReplacerWebpackPlugin = require('../index.js');
 const expect = require('expect.js');
 const webpackMock = require('webpack-mock');
 
-let contentReplacer;
+let contentReplacerWebpackPlugin;
 const options = {
   modifiedFile: './file.txt',
   modifications: [
