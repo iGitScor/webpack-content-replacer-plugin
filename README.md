@@ -33,7 +33,7 @@ Add the plugin to your plugin list
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       modifiedFile: './relative_path/file_to_be_modified.ext',
       modifications: [
         {
@@ -62,7 +62,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       silent: true,
       ...
       ],
@@ -82,7 +82,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       silent: true,
       modifiedFile: './build/index.html',
       ...
@@ -102,7 +102,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       silent: true,
       modifiedFile: './build/index.html',
       [
@@ -141,7 +141,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       silent: true,
       modifiedFile: './build/index.html',
       [
