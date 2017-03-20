@@ -1,6 +1,8 @@
-<center>![Project logo][project-logo]</center>
-
-# Webpack content replacer
+<h1 align="center">
+<img src="https://raw.githubusercontent.com/iGitScor/webpack-content-replacer/master/logo.png" />
+<br />
+Webpack content replacer
+</h1>
 
 [![Build Status][build-badge]][build]
 [![codecov][codecoverage-badge]][codecoverage]
