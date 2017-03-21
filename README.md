@@ -26,14 +26,14 @@ npm i webpack-content-replacer-plugin
 
 **Require `webpack-content-replacer-plugin`**
 ```javascript
-var ContentReplacerWebpackPlugin = require('webpack-content-replacer-plugin')
+var ContentReplacer = require('webpack-content-replacer-plugin')
 ```
 
 Add the plugin to your plugin list
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacerWebpackPlugin({
+    new ContentReplacer({
       modifiedFile: './relative_path/file_to_be_modified.ext',
       modifications: [
         {
@@ -62,7 +62,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacerWebpackPlugin({
+    new ContentReplacer({
       silent: true,
       ...
       ],
@@ -82,7 +82,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacerWebpackPlugin({
+    new ContentReplacer({
       silent: true,
       modifiedFile: './build/index.html',
       ...
@@ -102,7 +102,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacerWebpackPlugin({
+    new ContentReplacer({
       silent: true,
       modifiedFile: './build/index.html',
       [
@@ -141,7 +141,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacerWebpackPlugin({
+    new ContentReplacer({
       silent: true,
       modifiedFile: './build/index.html',
       [
