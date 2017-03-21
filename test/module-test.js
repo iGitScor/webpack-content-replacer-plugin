@@ -2,11 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
-const ContentReplacerPlugin = require('../index.js');
+const ContentReplacerWebpackPlugin = require('../index.js');
 const expect = require('expect.js');
 const webpackMock = require('webpack-mock');
 
-let contentReplacer;
+let contentReplacerWebpackPlugin;
 const options = {
   modifiedFile: './file.txt',
   modifications: [
@@ -20,7 +20,7 @@ const options = {
 const invalidOptionsType = '';
 const invalidOptionsObj = {};
 
-describe('ContentReplacer plugin', () => {
+describe('ContentReplacerWebpackPlugin plugin', () => {
   before(() => {
     fs.writeFileSync('test/file.txt', '%content_to_be_deleted%');
   });
@@ -30,14 +30,14 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should be instantiated', () => {
-    contentReplacer = new ContentReplacerPlugin(options);
-    expect(typeof contentReplacer).to.equal('object');
+    contentReplacerWebpackPlugin = new ContentReplacerWebpackPlugin(options);
+    expect(typeof contentReplacerWebpackPlugin).to.equal('object');
   });
 
   it('should throw error when no parameters', () => {
     const noParamConstructor = () => {
       // eslint-disable-next-line no-new
-      new ContentReplacerPlugin();
+      new ContentReplacerWebpackPlugin();
     };
 
     expect(noParamConstructor).to.throwException(/Parameters are invalid/);
@@ -46,59 +46,59 @@ describe('ContentReplacer plugin', () => {
   it('should throw error when parameter format is wrong', () => {
     const wrongParamConstructor = () => {
       // eslint-disable-next-line no-new
-      new ContentReplacerPlugin({});
+      new ContentReplacerWebpackPlugin({});
     };
 
     expect(wrongParamConstructor).to.throwException(/Required parameters are missing/);
   });
 
   it('should have default options', () => {
-    expect(contentReplacer.buildTrigger).to.equal('after-emit');
-    expect(contentReplacer.silent).to.equal(false);
-    expect(contentReplacer.verbose).to.equal(true);
+    expect(contentReplacerWebpackPlugin.buildTrigger).to.equal('after-emit');
+    expect(contentReplacerWebpackPlugin.silent).to.equal(false);
+    expect(contentReplacerWebpackPlugin.verbose).to.equal(true);
   });
 
   it('should have valid options', () => {
-    expect(ContentReplacerPlugin.hasValidOptions(options)).to.equal(true);
+    expect(ContentReplacerWebpackPlugin.hasValidOptions(options)).to.equal(true);
   });
 
   it('should detect invalid options (string)', () => {
-    expect(ContentReplacerPlugin.hasValidOptions(invalidOptionsType)).to.equal(false);
+    expect(ContentReplacerWebpackPlugin.hasValidOptions(invalidOptionsType)).to.equal(false);
   });
 
   it('should have required parameters', () => {
-    expect(ContentReplacerPlugin.hasRequiredParameters(options)).to.equal(true);
+    expect(ContentReplacerWebpackPlugin.hasRequiredParameters(options)).to.equal(true);
   });
 
   it('should detect missing required parameters', () => {
-    expect(ContentReplacerPlugin.hasRequiredParameters(invalidOptionsObj)).to.equal(false);
+    expect(ContentReplacerWebpackPlugin.hasRequiredParameters(invalidOptionsObj)).to.equal(false);
   });
 
   it('should detect missing file', () => {
-    contentReplacer.verbose = false;
-    expect(contentReplacer.replace).to.throwException(/File not found/);
+    contentReplacerWebpackPlugin.verbose = false;
+    expect(contentReplacerWebpackPlugin.replace).to.throwException(/File not found/);
 
-    contentReplacer.verbose = true;
-    expect(contentReplacer.replace).to.throwException(/File not found/);
+    contentReplacerWebpackPlugin.verbose = true;
+    expect(contentReplacerWebpackPlugin.replace).to.throwException(/File not found/);
   });
 
   it('should replace content', () => {
-    contentReplacer.verbose = false;
-    contentReplacer.modifiedFile = path.resolve('test/file.txt');
-    expect(contentReplacer.replace()).to.equal(true);
+    contentReplacerWebpackPlugin.verbose = false;
+    contentReplacerWebpackPlugin.modifiedFile = path.resolve('test/file.txt');
+    expect(contentReplacerWebpackPlugin.replace()).to.equal(true);
 
     // Test with verbose mode
-    contentReplacer.verbose = true;
-    contentReplacer.modifications = [
+    contentReplacerWebpackPlugin.verbose = true;
+    contentReplacerWebpackPlugin.modifications = [
       {
         regex: /new_content/g,
         modification: '%content_to_be_deleted%',
       },
     ];
-    expect(contentReplacer.replace()).to.equal(true);
+    expect(contentReplacerWebpackPlugin.replace()).to.equal(true);
   });
 
   it('should apply compiler (webpack-mock)', () => {
-    contentReplacer.apply(webpackMock);
+    contentReplacerWebpackPlugin.apply(webpackMock);
   });
 });

@@ -1,4 +1,4 @@
-const ContentReplacer = require('../index');
+const ContentReplacerWebpackPlugin = require('../index');
 
 const htmlOptions = {
   modifiedFile: './workflow_test/index.html',
@@ -30,7 +30,7 @@ const cssOptions = {
 
 module.exports = {
   plugins: [
-    new ContentReplacer(htmlOptions),
-    new ContentReplacer(cssOptions),
+    new ContentReplacerWebpackPlugin(htmlOptions),
+    new ContentReplacerWebpackPlugin(cssOptions),
   ],
 };
