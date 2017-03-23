@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/iGitScor/webpack-content-replacer/master/logo.png" />
+<img src="https://raw.githubusercontent.com/iGitScor/webpack-content-replacer-plugin/master/logo.png" />
 <br />
 Webpack content replacer
 </h1>
@@ -28,14 +28,14 @@ npm i webpack-content-replacer-plugin
 
 **Require `webpack-content-replacer-plugin`**
 ```javascript
-var ContentReplacer = require('webpack-content-replacer-plugin')
+var ContentReplacerWebpackPlugin = require('webpack-content-replacer-plugin')
 ```
 
 Add the plugin to your plugin list
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       modifiedFile: './relative_path/file_to_be_modified.ext',
       modifications: [
         {
@@ -65,7 +65,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       modifiedFile: './build/index.html',
       ...
     })
@@ -84,7 +84,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       modifiedFile: './build/index.html',
       [
         {
@@ -122,7 +122,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       modifiedFile: './build/index.html',
       [
         {
@@ -147,7 +147,7 @@ Example:
 ```javascript
 var config = {
   plugins: [
-    new ContentReplacer({
+    new ContentReplacerWebpackPlugin({
       silent: true,
       modifiedFile: './build/index.html',
       [
@@ -166,8 +166,8 @@ var config = {
 ## Developing
 
 ```shell
-git clone https://github.com/{your fork}/webpack-content-replacer.git
-cd webpack-content-replacer/
+git clone https://github.com/{your fork}/webpack-content-replacer-plugin.git
+cd webpack-content-replacer-plugin/
 npm install
 ```
 
@@ -194,7 +194,6 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 The code in this project is licensed under MIT license.
 
-[project-logo]: https://raw.githubusercontent.com/iGitScor/webpack-content-replacer/master/logo.png
 [build-badge]: https://img.shields.io/travis/iGitScor/webpack-content-replacer-plugin.svg?style=flat-square
 [build]: https://travis-ci.org/iGitScor/webpack-content-replacer-plugin
 [codecoverage-badge]: https://codecov.io/gh/iGitScor/webpack-content-replacer-plugin/branch/master/graph/badge.svg?style=flat-square

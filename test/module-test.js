@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const ContentReplacerPlugin = require('../index.js');
+const ContentReplacerWebpackPlugin = require('../index.js');
 const expect = require('expect.js');
 const webpackMock = require('webpack-mock');
 
@@ -30,14 +30,14 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should be instantiated', () => {
-    contentReplacer = new ContentReplacerPlugin(options);
+    contentReplacer = new ContentReplacerWebpackPlugin(options);
     expect(typeof contentReplacer).to.equal('object');
   });
 
   it('should throw error when no parameters', () => {
     const noParamConstructor = () => {
       // eslint-disable-next-line no-new
-      new ContentReplacerPlugin();
+      new ContentReplacerWebpackPlugin();
     };
 
     expect(noParamConstructor).to.throwException(/Parameters are invalid/);
@@ -46,7 +46,7 @@ describe('ContentReplacer plugin', () => {
   it('should throw error when parameter format is wrong', () => {
     const wrongParamConstructor = () => {
       // eslint-disable-next-line no-new
-      new ContentReplacerPlugin({});
+      new ContentReplacerWebpackPlugin({});
     };
 
     expect(wrongParamConstructor).to.throwException(/Required parameters are missing/);
@@ -59,19 +59,19 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should have valid options', () => {
-    expect(ContentReplacerPlugin.hasValidOptions(options)).to.equal(true);
+    expect(ContentReplacerWebpackPlugin.hasValidOptions(options)).to.equal(true);
   });
 
   it('should detect invalid options (string)', () => {
-    expect(ContentReplacerPlugin.hasValidOptions(invalidOptionsType)).to.equal(false);
+    expect(ContentReplacerWebpackPlugin.hasValidOptions(invalidOptionsType)).to.equal(false);
   });
 
   it('should have required parameters', () => {
-    expect(ContentReplacerPlugin.hasRequiredParameters(options)).to.equal(true);
+    expect(ContentReplacerWebpackPlugin.hasRequiredParameters(options)).to.equal(true);
   });
 
   it('should detect missing required parameters', () => {
-    expect(ContentReplacerPlugin.hasRequiredParameters(invalidOptionsObj)).to.equal(false);
+    expect(ContentReplacerWebpackPlugin.hasRequiredParameters(invalidOptionsObj)).to.equal(false);
   });
 
   it('should detect missing file', () => {
