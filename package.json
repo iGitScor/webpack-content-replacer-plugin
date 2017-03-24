@@ -1,12 +1,14 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Replace content in file in webpack workflow",
   "main": "index.js",
   "scripts": {
     "lint": "eslint '**/*.js' --ignore-path .eshintignore",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha",
-    "test": "npm run lint && npm run cover && codecov",
+    "pretest": "npm run lint",
+    "test": "npm run cover",
+    "posttest": "codecov",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate"
   },
