@@ -1,6 +1,6 @@
 {
   "name": "webpack-content-replacer-plugin",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Replace content in file in webpack workflow",
   "main": "index.js",
   "scripts": {
