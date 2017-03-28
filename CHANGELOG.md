@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this project follows the [Semantic Versioning](http://semver.org) code.
 
+## 0.3.9 - 2017-03-28
+### Added
+- Add node analytics trigger
+
 ## 0.3.8 - 2017-03-24
 ### Changed
 - Rename plugin class name (no breaking change)
