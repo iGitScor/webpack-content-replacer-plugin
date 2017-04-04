@@ -67,7 +67,9 @@ module.exports = class ContentReplacerWebpackPlugin {
     const that = this;
     compiler.plugin(this.buildTrigger, (compilation, callback) => {
       that.replace();
-      callback();
+      if (callback) {
+        callback();
+      }
     });
   }
 };

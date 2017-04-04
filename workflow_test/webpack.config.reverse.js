@@ -1,6 +1,7 @@
 const ContentReplacerWebpackPlugin = require('../index');
 
 const htmlOptions = {
+  buildTrigger: 'after-emit',
   modifiedFile: './workflow_test/index.html',
   modifications: [
     {
@@ -15,6 +16,7 @@ const htmlOptions = {
 };
 
 const cssOptions = {
+  buildTrigger: 'done',
   modifiedFile: './workflow_test/style.css',
   modifications: [
     {
@@ -28,9 +30,21 @@ const cssOptions = {
   ],
 };
 
+const jsonOptions = {
+  buildTrigger: 'failed',
+  modifiedFile: './workflow_test/test.json',
+  modifications: [
+    {
+      regex: /ERROR/g,
+      modification: 'OK',
+    },
+  ],
+};
+
 module.exports = {
   plugins: [
     new ContentReplacerWebpackPlugin(htmlOptions),
     new ContentReplacerWebpackPlugin(cssOptions),
+    new ContentReplacerWebpackPlugin(jsonOptions),
   ],
 };
