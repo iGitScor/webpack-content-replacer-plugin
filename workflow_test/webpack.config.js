@@ -30,21 +30,9 @@ const cssOptions = {
   ],
 };
 
-const jsonOptions = {
-  buildTrigger: 'failed',
-  modifiedFile: './workflow_test/test.json',
-  modifications: [
-    {
-      regex: /OK/g,
-      modification: 'ERROR',
-    },
-  ],
-};
-
 module.exports = {
   plugins: [
     new ContentReplacerWebpackPlugin(htmlOptions),
     new ContentReplacerWebpackPlugin(cssOptions),
-    new ContentReplacerWebpackPlugin(jsonOptions),
   ],
 };

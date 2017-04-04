@@ -55,21 +55,4 @@ describe('Webpack workflow test cases', () => {
       return done();
     });
   });
-
-  it('should work when an error has occured', (done) => {
-    const configWithErrorPlugin = config;
-    const errorPlugin = function buildDone() {
-      this.plugin('done', (stats) => {
-        if (stats.compilation.errors && stats.compilation.errors.length) {
-          process.on('beforeExit', () => {
-            process.exit(1);
-          });
-        }
-      });
-    };
-
-    configWithErrorPlugin.plugins.push(errorPlugin);
-
-    webpack(configWithErrorPlugin, () => done());
-  });
 });
