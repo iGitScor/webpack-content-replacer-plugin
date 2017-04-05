@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com) and this pr
 ### Changed
 - Remove failed status **Breaking change**
 - Test `after-emit` and `done` status
+- Set node analytics as optional
 
 ## 0.3.9 - 2017-03-28
 ### Added
