@@ -31,9 +31,6 @@
     "url": "https://github.com/iGitScor/webpack-content-replacer-plugin/issues"
   },
   "homepage": "https://github.com/iGitScor/webpack-content-replacer-plugin#readme",
-  "dependencies": {
-    "ua-npmscript-notifier": "^0.1.1"
-  },
   "devDependencies": {
     "all-contributors-cli": "^4.0.1",
     "codecov": "^2.1.0",
@@ -47,6 +44,9 @@
     "mocha": "^3.2.0",
     "webpack": "^1.14.0",
     "webpack-mock": "^0.1.1"
+  },
+  "optionalDependencies": {
+    "ua-npmscript-notifier": "^0.2"
   },
   "engines": {
     "node": ">=4"
