@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-const validBuildTrigger = ['after-emit', 'done', 'failed'];
+const validBuildTrigger = ['after-emit', 'done'];
 
 module.exports = class ContentReplacerWebpackPlugin {
   constructor(options) {
@@ -67,7 +67,9 @@ module.exports = class ContentReplacerWebpackPlugin {
     const that = this;
     compiler.plugin(this.buildTrigger, (compilation, callback) => {
       that.replace();
-      callback();
+      if (callback) {
+        callback();
+      }
     });
   }
 };

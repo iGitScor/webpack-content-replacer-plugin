@@ -114,7 +114,7 @@ Example:
 #### buildTrigger
 - Type: `String`
 - Default: `after-emit`
-- Allowed values: `after-emit`, `done`, `failed`
+- Allowed values: `after-emit`, `done`
 
 Specify webpack build step (c.f [plugin documentation](https://webpack.github.io/docs/plugins.html)).
 

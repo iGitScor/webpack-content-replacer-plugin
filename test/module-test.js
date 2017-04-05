@@ -87,8 +87,6 @@ describe('ContentReplacer plugin', () => {
     contentReplacer.modifiedFile = path.resolve('test/file.txt');
     expect(contentReplacer.replace()).to.equal(true);
 
-    // Test with verbose mode
-    contentReplacer.verbose = true;
     contentReplacer.modifications = [
       {
         regex: /new_content/g,
@@ -99,6 +97,8 @@ describe('ContentReplacer plugin', () => {
   });
 
   it('should apply compiler (webpack-mock)', () => {
+    // Test with verbose mode
+    contentReplacer.verbose = true;
     contentReplacer.apply(webpackMock);
   });
 });
