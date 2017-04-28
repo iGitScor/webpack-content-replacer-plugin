@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com) and this project follows the [Semantic Versioning](http://semver.org) code.
 
+## 0.5.0 - 2017-04-28
+### Added
+- Add log level w/o breaking change
+
+### Changed
+- Transform current behavior to use strict log level
+
 ## 0.4.0 - 2017-04-04
 ### Changed
 - Remove failed status **Breaking change**

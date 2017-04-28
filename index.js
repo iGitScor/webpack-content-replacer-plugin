@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const logger = require('./helpers/logger');
 
 const validBuildTrigger = ['after-emit', 'done'];
 
@@ -14,11 +15,19 @@ module.exports = class ContentReplacerWebpackPlugin {
       this.buildTrigger = options.buildTrigger || 'after-emit';
       this.silent = options.silent === true || false;
       this.verbose = !this.silent;
+
+      this.logLevel = options.logLevel || 'strict';
+      this.addLogger();
     } else {
       // Throw exception
       const error = typeof options === 'object'
         ? 'Required parameters are missing'
         : 'Parameters are invalid';
+
+      this.silent = false;
+      this.logLevel = 'strict';
+      this.addLogger();
+      this.exceptionLogger.warn(error);
 
       throw new Error(error);
     }
@@ -41,6 +50,15 @@ module.exports = class ContentReplacerWebpackPlugin {
         options.modifications.length > 0);
   }
 
+  addLogger() {
+    if (!this.silent) {
+      this.exceptionLogger = logger(this.logLevel);
+    } else {
+      // Empty logger when silent mode is activated
+      this.exceptionLogger = logger();
+    }
+  }
+
   replace() {
     const that = this;
     if (fs.existsSync(this.modifiedFile)) {
@@ -60,7 +78,13 @@ module.exports = class ContentReplacerWebpackPlugin {
       return true;
     }
 
-    throw new Error('File not found');
+    this.exceptionLogger.warn('File not found');
+
+    if (this.logLevel === 'strict') {
+      throw new Error('File not found');
+    }
+
+    return false;
   }
 
   apply(compiler) {
