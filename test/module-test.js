@@ -74,12 +74,34 @@ describe('ContentReplacer plugin', () => {
     expect(ContentReplacerWebpackPlugin.hasRequiredParameters(invalidOptionsObj)).to.equal(false);
   });
 
-  it('should detect missing file', () => {
-    contentReplacer.verbose = false;
-    expect(contentReplacer.replace).to.throwException(/File not found/);
+  it('should detect missing file in silent mode', () => {
+    const modifiedOptions = options;
+    modifiedOptions.silent = true;
+    contentReplacer = new ContentReplacerWebpackPlugin(modifiedOptions);
 
-    contentReplacer.verbose = true;
-    expect(contentReplacer.replace).to.throwException(/File not found/);
+    let errEx;
+    try {
+      contentReplacer.replace();
+    } catch (e) {
+      errEx = e;
+    }
+
+    expect(errEx).not.to.be(undefined);
+  });
+
+  it('should detect missing file in verbose mode', () => {
+    const modifiedOptions = options;
+    modifiedOptions.silent = false;
+    contentReplacer = new ContentReplacerWebpackPlugin(modifiedOptions);
+
+    let errEx;
+    try {
+      contentReplacer.replace();
+    } catch (e) {
+      errEx = e;
+    }
+
+    expect(errEx).not.to.be(undefined);
   });
 
   it('should replace content', () => {

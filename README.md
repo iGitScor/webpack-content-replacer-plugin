@@ -137,6 +137,36 @@ var config = {
 }
 ```
 
+#### logLevel
+- Type: `String`
+- Default: `strict`
+- Allowed value: `strict`, `log`, `none`
+  - `strict`: catch errors in an exception, **the webpack build crashes**
+  - `log`: log errors in a log file (`warning.log`) and none behavior
+  - `none`: show errors in console (when silent mode is off)
+
+Specify behavior when the plugin fail.
+
+Example:
+```javascript
+var config = {
+  plugins: [
+    new ContentReplacerWebpackPlugin({
+      modifiedFile: './build/index.html',
+      [
+        {
+          regex: /text/g,
+          modification: 'new text'
+        }
+      ],
+      buildTrigger: 'done',
+      logLevel: 'log'
+      ...
+    })
+  ]
+}
+```
+
 #### silent
 - Type: `Boolean`  
 - Default: `false`
